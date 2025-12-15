@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run cli:*)"
+      "Bash(npm run cli:*)",
+      "Bash(python3:*)",
+      "Bash(tree:*)"
     ]
   }
 }
