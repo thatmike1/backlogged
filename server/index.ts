@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import { getDb } from "../src/db/index.js";
@@ -15,7 +16,7 @@ const PORT = 3000;
  */
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "http://localhost:5174"],
     credentials: true,
   }),
 );

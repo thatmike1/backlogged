@@ -339,9 +339,24 @@ export function getLibrary(
 }
 
 /**
+ * raw stats from database
+ */
+export interface RawLibraryStats {
+  total: number;
+  played: number;
+  playing: number;
+  backlog: number;
+  dropped: number;
+  wishlist: number;
+  skipped: number;
+  avg_rating: number | null;
+  total_hours: number | null;
+}
+
+/**
  * get library stats
  */
-export function getLibraryStats(db: Database.Database): Record<string, number> {
+export function getLibraryStats(db: Database.Database): RawLibraryStats {
   const stmt = db.prepare(`
     SELECT
       COUNT(*) as total,
@@ -350,11 +365,48 @@ export function getLibraryStats(db: Database.Database): Record<string, number> {
       SUM(CASE WHEN status = 'backlog' THEN 1 ELSE 0 END) as backlog,
       SUM(CASE WHEN status = 'dropped' THEN 1 ELSE 0 END) as dropped,
       SUM(CASE WHEN status = 'wishlist' THEN 1 ELSE 0 END) as wishlist,
+      SUM(CASE WHEN status = 'skipped' THEN 1 ELSE 0 END) as skipped,
       AVG(user_rating) as avg_rating,
       SUM(hours_played) as total_hours
     FROM library
   `);
-  return stmt.get() as Record<string, number>;
+  return stmt.get() as RawLibraryStats;
+}
+
+/**
+ * get top genres from library
+ */
+export function getTopGenres(
+  db: Database.Database,
+  limit: number = 10,
+): Array<{ genre: string; count: number }> {
+  const stmt = db.prepare(`
+    SELECT g.genres
+    FROM library l
+    JOIN games g ON l.game_id = g.id
+    WHERE g.genres IS NOT NULL AND g.genres != '[]'
+  `);
+
+  const rows = stmt.all() as Array<{ genres: string }>;
+
+  // parse genres and count
+  const genreCounts: Record<string, number> = {};
+  for (const row of rows) {
+    try {
+      const genres = JSON.parse(row.genres) as string[];
+      for (const genre of genres) {
+        genreCounts[genre] = (genreCounts[genre] || 0) + 1;
+      }
+    } catch {
+      // skip invalid json
+    }
+  }
+
+  // sort by count and return top N
+  return Object.entries(genreCounts)
+    .map(([genre, count]) => ({ genre, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, limit);
 }
 
 // ============================================

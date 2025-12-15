@@ -30,7 +30,7 @@ export interface LibraryGame {
  * igdb game data
  */
 export interface IgdbGame {
-  id: number;
+  igdbId: number;
   name: string;
   summary: string | null;
   coverUrl: string | null;
@@ -182,7 +182,7 @@ export const igdb = {
   /**
    * gets a single game from igdb by id
    */
-  getGame: (igdbId: number) => fetchApi<IgdbGame>(`/igdb/games/${igdbId}`),
+  getGame: (igdbId: number) => fetchApi<IgdbGame>(`/igdb/game/${igdbId}`),
 
   /**
    * discovers games based on filters

@@ -33,7 +33,23 @@ router.get("/", (req: Request, res: Response, next: NextFunction) => {
     }
 
     const entries = getLibrary(req.db, filters);
-    res.json({ success: true, data: entries });
+
+    // flatten to match frontend LibraryGame interface
+    const flattenedEntries = entries.map((entry) => ({
+      id: entry.id,
+      igdbId: entry.game.igdbId,
+      name: entry.game.name,
+      coverUrl: entry.game.coverUrl,
+      status: entry.status,
+      rating: entry.userRating,
+      notes: entry.notes,
+      hoursPlayed: entry.hoursPlayed,
+      completedAt: entry.completedAt,
+      createdAt: entry.createdAt,
+      updatedAt: entry.updatedAt,
+    }));
+
+    res.json({ success: true, data: flattenedEntries });
   } catch (err) {
     next(err);
   }
