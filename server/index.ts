@@ -27,12 +27,9 @@ app.use(
 app.use(express.json());
 
 /**
- * middleware to attach database connection to request
+ * set database connection on app.locals for routes to access
  */
-app.use((req: Request, _res: Response, next: NextFunction) => {
-  req.db = getDb();
-  next();
-});
+app.locals.db = getDb();
 
 /**
  * mount API routes
@@ -53,13 +50,8 @@ app.get("/api/health", (_req: Request, res: Response) => {
 /**
  * error handling middleware
  */
-app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error("API Error:", err.message);
-
-  // close database connection on error
-  if (req.db) {
-    req.db.close();
-  }
 
   res.status(500).json({
     success: false,
@@ -67,29 +59,6 @@ app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
   });
 });
 
-/**
- * middleware to close database connection after response
- */
-app.use((req: Request, res: Response, next: NextFunction) => {
-  res.on("finish", () => {
-    if (req.db) {
-      req.db.close();
-    }
-  });
-  next();
-});
-
 app.listen(PORT, () => {
   console.log(`Backlogged API server running on http://localhost:${PORT}`);
 });
-
-/**
- * extend Express Request type to include database
- */
-declare global {
-  namespace Express {
-    interface Request {
-      db: ReturnType<typeof getDb>;
-    }
-  }
-}

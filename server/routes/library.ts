@@ -1,13 +1,13 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import { Router, Request, Response, NextFunction } from "express";
 import {
   getLibrary,
   addToLibrary,
   updateLibraryEntry,
   removeFromLibrary,
   upsertGame,
-} from '../../src/db/index.js';
-import { getGameById as getGameFromIgdb } from '../../src/services/igdb.js';
-import type { GameStatus, LibraryFilters } from '../../src/types/index.js';
+} from "../../src/db/index.js";
+import { getGameById as getGameFromIgdb } from "../../src/services/igdb.js";
+import type { GameStatus, LibraryFilters } from "../../src/types/index.js";
 
 const router = Router();
 
@@ -15,7 +15,7 @@ const router = Router();
  * GET / - get library entries with optional filters
  * query params: status, minRating, maxRating, search
  */
-router.get('/', (req: Request, res: Response, next: NextFunction) => {
+router.get("/", (req: Request, res: Response, next: NextFunction) => {
   try {
     const filters: LibraryFilters = {};
 
@@ -59,14 +59,14 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
  * POST / - add a game to library
  * body: { igdbId, status, rating?, notes?, hours? }
  */
-router.post('/', async (req: Request, res: Response, next: NextFunction) => {
+router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { igdbId, status, rating, notes, hours } = req.body;
 
     if (!igdbId || !status) {
       res.status(400).json({
         success: false,
-        error: 'igdbId and status are required',
+        error: "igdbId and status are required",
       });
       return;
     }
@@ -94,7 +94,7 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
         userRating: rating,
         notes,
         hoursPlayed: hours,
-      }
+      },
     );
 
     res.status(201).json({
@@ -110,14 +110,14 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
  * PUT /:gameId - update library entry
  * body: { status?, userRating?, notes?, hoursPlayed?, completedAt?, startedAt? }
  */
-router.put('/:gameId', (req: Request, res: Response, next: NextFunction) => {
+router.put("/:gameId", (req: Request, res: Response, next: NextFunction) => {
   try {
     const gameId = parseInt(req.params.gameId, 10);
 
     if (isNaN(gameId)) {
       res.status(400).json({
         success: false,
-        error: 'Invalid gameId',
+        error: "Invalid gameId",
       });
       return;
     }
@@ -143,14 +143,14 @@ router.put('/:gameId', (req: Request, res: Response, next: NextFunction) => {
 /**
  * DELETE /:gameId - remove game from library
  */
-router.delete('/:gameId', (req: Request, res: Response, next: NextFunction) => {
+router.delete("/:gameId", (req: Request, res: Response, next: NextFunction) => {
   try {
     const gameId = parseInt(req.params.gameId, 10);
 
     if (isNaN(gameId)) {
       res.status(400).json({
         success: false,
-        error: 'Invalid gameId',
+        error: "Invalid gameId",
       });
       return;
     }

@@ -1,5 +1,5 @@
-import { Router, Request, Response, NextFunction } from 'express';
-import { getLibraryStats, getTopGenres } from '../../src/db/index.js';
+import { Router, Request, Response, NextFunction } from "express";
+import { getLibraryStats, getTopGenres } from "../../src/db/index.js";
 
 const router = Router();
 
@@ -24,7 +24,7 @@ interface LibraryStats {
 /**
  * GET / - get library statistics
  */
-router.get('/', (req: Request, res: Response, next: NextFunction) => {
+router.get("/", (req: Request, res: Response, next: NextFunction) => {
   try {
     const rawStats = getLibraryStats(req.app.locals.db);
     const topGenres = getTopGenres(req.app.locals.db, 10);

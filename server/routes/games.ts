@@ -18,7 +18,7 @@ router.get("/:igdbId", (req: Request, res: Response, next: NextFunction) => {
       return;
     }
 
-    const game = getGameByIgdbId(req.db, igdbId);
+    const game = getGameByIgdbId(req.app.locals.db, igdbId);
 
     if (!game) {
       res.status(404).json({

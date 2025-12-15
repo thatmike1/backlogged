@@ -13,7 +13,7 @@ const router = Router();
  */
 router.get("/", (req: Request, res: Response, next: NextFunction) => {
   try {
-    const categories = getCategories(req.db);
+    const categories = getCategories(req.app.locals.db);
     res.json({ success: true, data: categories });
   } catch (err) {
     next(err);
@@ -36,7 +36,12 @@ router.post("/", (req: Request, res: Response, next: NextFunction) => {
       return;
     }
 
-    const categoryId = createCategory(req.db, name, description, color);
+    const categoryId = createCategory(
+      req.app.locals.db,
+      name,
+      description,
+      color,
+    );
     res.status(201).json({ success: true, data: { categoryId } });
   } catch (err) {
     next(err);
@@ -61,7 +66,7 @@ router.post(
         return;
       }
 
-      addGameToCategory(req.db, gameId, categoryId);
+      addGameToCategory(req.app.locals.db, gameId, categoryId);
       res.json({ success: true, data: { gameId, categoryId } });
     } catch (err) {
       next(err);
@@ -87,7 +92,7 @@ router.delete(
         return;
       }
 
-      removeGameFromCategory(req.db, gameId, categoryId);
+      removeGameFromCategory(req.app.locals.db, gameId, categoryId);
       res.json({ success: true, data: { gameId, categoryId } });
     } catch (err) {
       next(err);

@@ -68,7 +68,7 @@ router.get(
       }
 
       // cache the game in local database
-      const localId = upsertGame(req.db, game);
+      const localId = upsertGame(req.app.locals.db, game);
 
       res.json({
         success: true,
