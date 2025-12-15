@@ -3,13 +3,21 @@
   "version": "0.1.0",
   "description": "Personal game library and discovery app with Claude Code integration",
   "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "web"
+  ],
   "main": "dist/cli/index.js",
   "bin": {
     "backlogged": "dist/cli/index.js"
   },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsx watch src/cli/index.ts",
+    "build": "tsc && npm run build:web",
+    "build:web": "npm -w web run build",
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "tsx watch server/index.ts",
+    "dev:web": "npm -w web run dev",
     "cli": "tsx src/cli/index.ts",
     "db:init": "tsx src/db/init.ts",
     "typecheck": "tsc --noEmit"
@@ -22,6 +30,7 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.11",
     "@types/node": "^22.10.2",
+    "concurrently": "^9.1.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
