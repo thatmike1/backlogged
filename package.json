@@ -1,0 +1,31 @@
+{
+  "name": "backlogged",
+  "version": "0.1.0",
+  "description": "Personal game library and discovery app with Claude Code integration",
+  "type": "module",
+  "main": "dist/cli/index.js",
+  "bin": {
+    "backlogged": "dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/cli/index.ts",
+    "cli": "tsx src/cli/index.ts",
+    "db:init": "tsx src/db/init.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.6.0",
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
