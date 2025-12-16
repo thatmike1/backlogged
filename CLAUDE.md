@@ -143,3 +143,49 @@ Tables:
 - Check rec-history to avoid repeating rejected recommendations
 - When user says "I played X", default status is `played` unless specified
 - Preserve user's ratings/notes when updating entries
+
+## Issue Tracking with Beads (bd)
+
+This project uses beads (`bd`) for issue tracking instead of markdown files. Use the local `bd` CLI directly via bash - never use MCP tools for beads operations.
+
+### Why Beads
+
+- dependency-aware issue tracking (issues chained like beads)
+- persists across compaction cycles via git-backed JSONL
+- agents can query ready work and orient themselves quickly
+- automatically file issues for discovered work as you go
+
+### Key Commands
+
+```bash
+bd list                     # list all issues
+bd list --status open       # filter by status (open, in_progress, blocked, closed)
+bd ready                    # show issues ready to work on (no blockers)
+bd show <issue-id>          # show issue details
+bd create "title" -t task   # create issue (-t: bug, feature, task, epic, chore)
+bd update <id> --status in_progress
+bd close <id> --reason "done"
+bd dep add <id> <blocker-id>  # add dependency
+bd stats                    # project statistics
+```
+
+### Workflow
+
+1. **starting work**: run `bd ready` to find unblocked issues
+2. **claim work**: `bd update <id> --status in_progress`
+3. **discover related work**: create new issues with `bd create`, link with `bd dep add`
+4. **complete work**: `bd close <id> --reason "description"`
+
+### Priority Levels
+
+- 0 = highest (critical)
+- 1 = high
+- 2 = medium (default)
+- 3 = low
+- 4 = lowest
+
+### Database Location
+
+- `.beads/` directory contains the SQLite database
+- auto-syncs with `.beads/issues.jsonl` (committed to git)
+- no manual export/import needed
