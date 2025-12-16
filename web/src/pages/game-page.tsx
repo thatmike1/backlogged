@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   ArrowLeft,
@@ -58,11 +58,11 @@ export default function GamePage() {
   const removeFromLibrary = useRemoveFromLibrary();
 
   // initialize notes from library entry
-  useState(() => {
+  useEffect(() => {
     if (libraryEntry?.notes && !hasNotesChanged) {
       setNotes(libraryEntry.notes);
     }
-  });
+  }, [libraryEntry?.notes, hasNotesChanged]);
 
   /**
    * adds game to library with a status
@@ -155,7 +155,7 @@ export default function GamePage() {
           <p className="text-xl font-display text-accent-coral">
             Game not found
           </p>
-          <p className="mt-2 text-text-secondary">
+          <p className="mt-2 text-text-secondary dark:text-stone-400">
             We couldn't find this game. It may have been removed from IGDB.
           </p>
           <Button
@@ -201,7 +201,7 @@ export default function GamePage() {
           {/* quick add buttons for non-library games */}
           {!isInLibrary && (
             <div className="mt-4 space-y-2">
-              <p className="text-sm font-semibold text-text-secondary">
+              <p className="text-sm font-semibold text-text-secondary dark:text-stone-400">
                 Add to library:
               </p>
               <div className="flex flex-wrap gap-2">
@@ -288,7 +288,7 @@ export default function GamePage() {
               <CardContent className="space-y-6">
                 {/* status */}
                 <div>
-                  <label className="block text-sm font-semibold text-text-secondary mb-2">
+                  <label className="block text-sm font-semibold text-text-secondary dark:text-stone-400 mb-2">
                     Status
                   </label>
                   <StatusButtonGroup
@@ -299,7 +299,7 @@ export default function GamePage() {
 
                 {/* rating */}
                 <div>
-                  <label className="block text-sm font-semibold text-text-secondary mb-2">
+                  <label className="block text-sm font-semibold text-text-secondary dark:text-stone-400 mb-2">
                     Your Rating
                   </label>
                   <Rating
@@ -311,7 +311,7 @@ export default function GamePage() {
 
                 {/* hours played */}
                 {libraryEntry.hoursPlayed && (
-                  <div className="flex items-center gap-2 text-text-secondary">
+                  <div className="flex items-center gap-2 text-text-secondary dark:text-stone-400">
                     <Clock className="w-4 h-4" />
                     <span>{libraryEntry.hoursPlayed} hours played</span>
                   </div>
@@ -319,7 +319,7 @@ export default function GamePage() {
 
                 {/* notes */}
                 <div>
-                  <label className="block text-sm font-semibold text-text-secondary mb-2">
+                  <label className="block text-sm font-semibold text-text-secondary dark:text-stone-400 mb-2">
                     Notes
                   </label>
                   <Textarea
@@ -366,7 +366,7 @@ export default function GamePage() {
         onClose={() => setShowDeleteModal(false)}
         title="Remove from Library?"
       >
-        <p className="text-text-secondary mb-6">
+        <p className="text-text-secondary dark:text-stone-400 mb-6">
           Are you sure you want to remove <strong>{igdbGame.name}</strong> from
           your library? This will delete your rating, notes, and play history.
         </p>

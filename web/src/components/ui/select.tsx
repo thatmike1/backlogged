@@ -145,16 +145,17 @@ export function Select({
           "flex items-center justify-between",
           "font-body text-base text-left",
           "bg-white dark:bg-bg-dark-elevated",
-          "border-3 border-black dark:border-stone-200",
+          "border-3 border-black dark:border-stone-600",
           "rounded-md",
-          "shadow-[3px_3px_0_#000]",
+          "shadow-[3px_3px_0_#000] dark:shadow-[3px_3px_0_#44403c]",
           "transition-all duration-150",
           "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
           !disabled && "hover:translate-x-[-1px] hover:translate-y-[-1px]",
-          !disabled && "hover:shadow-[4px_4px_0_#000]",
+          !disabled &&
+            "hover:shadow-[4px_4px_0_#000] dark:hover:shadow-[4px_4px_0_#44403c]",
           disabled && "opacity-50 cursor-not-allowed",
           isOpen &&
-            "translate-x-[-1px] translate-y-[-1px] shadow-[4px_4px_0_#000]",
+            "translate-x-[-1px] translate-y-[-1px] shadow-[4px_4px_0_#000] dark:shadow-[4px_4px_0_#44403c]",
         )}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
@@ -188,9 +189,9 @@ export function Select({
           className={cn(
             "absolute z-50 w-full mt-1",
             "bg-white dark:bg-bg-dark-elevated",
-            "border-3 border-black dark:border-stone-200",
+            "border-3 border-black dark:border-stone-600",
             "rounded-md",
-            "shadow-[5px_5px_0_#000]",
+            "shadow-[5px_5px_0_#000] dark:shadow-[5px_5px_0_#44403c]",
             "max-h-60 overflow-auto",
             "animate-in fade-in slide-in-from-top-2 duration-200",
           )}

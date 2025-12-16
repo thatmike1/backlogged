@@ -156,7 +156,7 @@ export const library = {
     }>,
   ) =>
     fetchApi<LibraryGame>(`/library/${id}`, {
-      method: "PATCH",
+      method: "PUT",
       body: JSON.stringify(data),
     }),
 

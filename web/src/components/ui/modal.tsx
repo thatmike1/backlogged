@@ -89,16 +89,16 @@ export function Modal({
         className={cn(
           "relative z-10 w-full max-w-lg",
           "bg-white dark:bg-bg-dark-elevated",
-          "border-3 border-black dark:border-stone-200",
+          "border-3 border-black dark:border-stone-600",
           "rounded-lg",
-          "shadow-[8px_8px_0_#000]",
+          "shadow-[8px_8px_0_#000] dark:shadow-[8px_8px_0_#44403c]",
           "animate-in zoom-in-95 duration-200",
           className,
         )}
       >
         {/* header */}
         {title && (
-          <div className="flex items-center justify-between px-6 py-4 border-b-3 border-black">
+          <div className="flex items-center justify-between px-6 py-4 border-b-3 border-black dark:border-stone-600">
             <h2
               id="modal-title"
               className="font-display font-bold text-xl text-black dark:text-white"
@@ -110,13 +110,13 @@ export function Modal({
               onClick={onClose}
               className={cn(
                 "p-1 rounded-md",
-                "border-2 border-black",
-                "shadow-[2px_2px_0_#000]",
+                "border-2 border-black dark:border-stone-600",
+                "shadow-[2px_2px_0_#000] dark:shadow-[2px_2px_0_#44403c]",
                 "transition-all duration-150",
                 "hover:translate-x-[-1px] hover:translate-y-[-1px]",
-                "hover:shadow-[3px_3px_0_#000]",
+                "hover:shadow-[3px_3px_0_#000] dark:hover:shadow-[3px_3px_0_#44403c]",
                 "active:translate-x-[1px] active:translate-y-[1px]",
-                "active:shadow-[1px_1px_0_#000]",
+                "active:shadow-[1px_1px_0_#000] dark:active:shadow-[1px_1px_0_#44403c]",
                 "focus:outline-none focus:ring-2 focus:ring-primary",
               )}
               aria-label="Close modal"
@@ -133,13 +133,13 @@ export function Modal({
             onClick={onClose}
             className={cn(
               "absolute top-4 right-4 p-1 rounded-md",
-              "border-2 border-black",
-              "shadow-[2px_2px_0_#000]",
+              "border-2 border-black dark:border-stone-600",
+              "shadow-[2px_2px_0_#000] dark:shadow-[2px_2px_0_#44403c]",
               "transition-all duration-150",
               "hover:translate-x-[-1px] hover:translate-y-[-1px]",
-              "hover:shadow-[3px_3px_0_#000]",
+              "hover:shadow-[3px_3px_0_#000] dark:hover:shadow-[3px_3px_0_#44403c]",
               "active:translate-x-[1px] active:translate-y-[1px]",
-              "active:shadow-[1px_1px_0_#000]",
+              "active:shadow-[1px_1px_0_#000] dark:active:shadow-[1px_1px_0_#44403c]",
               "focus:outline-none focus:ring-2 focus:ring-primary",
             )}
             aria-label="Close modal"

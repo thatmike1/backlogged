@@ -21,7 +21,7 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-50",
         "bg-white dark:bg-stone-900",
-        "border-b-3 border-black dark:border-stone-200",
+        "border-b-3 border-black dark:border-stone-600",
         "shadow-brutal-sm",
       )}
     >
@@ -48,8 +48,8 @@ export function Navbar() {
                     "rounded-md",
                     "transition-all duration-150",
                     isActive
-                      ? "bg-primary text-white shadow-brutal-sm border-2 border-black"
-                      : "text-text-secondary hover:text-text-primary hover:bg-stone-100 dark:hover:bg-stone-800",
+                      ? "bg-primary text-white shadow-brutal-sm border-2 border-black dark:border-stone-600"
+                      : "text-text-secondary dark:text-stone-400 hover:text-text-primary dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800",
                   )
                 }
               >
@@ -66,7 +66,7 @@ export function Navbar() {
             className={cn(
               "p-2",
               "rounded-md",
-              "border-2 border-black dark:border-stone-200",
+              "border-2 border-black dark:border-stone-600",
               "bg-white dark:bg-stone-800",
               "shadow-[2px_2px_0_#000] dark:shadow-[2px_2px_0_#fafaf9]",
               "hover:translate-x-[-1px] hover:translate-y-[-1px]",
@@ -100,7 +100,7 @@ export function Navbar() {
                   "transition-colors",
                   isActive
                     ? "text-primary font-semibold"
-                    : "text-text-secondary",
+                    : "text-text-secondary dark:text-stone-400",
                 )
               }
             >

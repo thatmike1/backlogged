@@ -97,7 +97,7 @@ export default function LibraryPage() {
           {/* search */}
           <form onSubmit={handleSearch} className="flex-1 flex gap-2">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted dark:text-stone-500" />
               <Input
                 type="text"
                 placeholder="Search your library..."
@@ -144,7 +144,9 @@ export default function LibraryPage() {
         {/* active filters */}
         {hasFilters && (
           <div className="mt-4 flex items-center gap-2 flex-wrap">
-            <span className="text-sm text-text-secondary">Active filters:</span>
+            <span className="text-sm text-text-secondary dark:text-stone-400">
+              Active filters:
+            </span>
             {statusFilter && (
               <Badge variant={statusFilter}>{statusFilter}</Badge>
             )}

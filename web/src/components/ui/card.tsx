@@ -16,14 +16,14 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       "border-3 border-black",
       "rounded-lg",
       "shadow-[5px_5px_0_#000]",
-      "dark:bg-bg-dark-elevated dark:border-stone-200",
+      "dark:bg-bg-dark-elevated dark:border-stone-600 dark:shadow-[5px_5px_0_#44403c]",
     ];
 
     const hoverableStyles = hoverable
       ? [
           "transition-all duration-150",
           "hover:translate-x-[-2px] hover:translate-y-[-2px]",
-          "hover:shadow-[7px_7px_0_#000]",
+          "hover:shadow-[7px_7px_0_#000] dark:hover:shadow-[7px_7px_0_#44403c]",
           "cursor-pointer",
         ]
       : [];
@@ -51,7 +51,10 @@ export const CardHeader = forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("px-6 py-4 border-b-3 border-black", className)}
+    className={cn(
+      "px-6 py-4 border-b-3 border-black dark:border-stone-600",
+      className,
+    )}
     {...props}
   />
 ));
@@ -99,7 +102,7 @@ export const CardFooter = forwardRef<
   <div
     ref={ref}
     className={cn(
-      "px-6 py-4 border-t-3 border-black flex items-center gap-2",
+      "px-6 py-4 border-t-3 border-black dark:border-stone-600 flex items-center gap-2",
       className,
     )}
     {...props}

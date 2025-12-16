@@ -176,10 +176,10 @@ export default function StatsPage() {
                     return (
                       <div key={status}>
                         <div className="flex justify-between items-center mb-1">
-                          <span className="font-semibold text-sm">
+                          <span className="font-semibold text-sm text-text-primary dark:text-stone-100">
                             {config.label}
                           </span>
-                          <span className="text-sm text-text-secondary">
+                          <span className="text-sm text-text-secondary dark:text-stone-400">
                             {count} ({percentage}%)
                           </span>
                         </div>
@@ -197,7 +197,7 @@ export default function StatsPage() {
                   })}
 
                 {Object.values(stats.byStatus).every((v) => v === 0) && (
-                  <p className="text-center text-text-secondary py-4">
+                  <p className="text-center text-text-secondary dark:text-stone-400 py-4">
                     No games in your library yet
                   </p>
                 )}
@@ -222,13 +222,15 @@ export default function StatsPage() {
                     <span className="w-6 h-6 flex items-center justify-center bg-primary/10 text-primary rounded font-bold text-sm">
                       {index + 1}
                     </span>
-                    <span className="flex-1 font-medium">{genre.genre}</span>
+                    <span className="flex-1 font-medium text-text-primary dark:text-stone-100">
+                      {genre.genre}
+                    </span>
                     <Badge variant="default">{genre.count} games</Badge>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-center text-text-secondary py-4">
+              <p className="text-center text-text-secondary dark:text-stone-400 py-4">
                 Not enough data yet
               </p>
             )}
@@ -255,7 +257,7 @@ export default function StatsPage() {
                     <span className="w-6 h-6 flex items-center justify-center bg-accent-yellow/20 text-accent-yellow rounded font-bold text-sm">
                       {index + 1}
                     </span>
-                    <span className="flex-1 font-medium line-clamp-1">
+                    <span className="flex-1 font-medium line-clamp-1 text-text-primary dark:text-stone-100">
                       {game.name}
                     </span>
                     <Badge
@@ -268,7 +270,7 @@ export default function StatsPage() {
                 ))}
               </div>
             ) : (
-              <p className="text-center text-text-secondary py-4">
+              <p className="text-center text-text-secondary dark:text-stone-400 py-4">
                 Rate some games to see your top picks!
               </p>
             )}
@@ -292,7 +294,7 @@ export default function StatsPage() {
                     href={`/game/${game.igdbId}`}
                     className="flex items-center gap-3 hover:bg-stone-50 dark:hover:bg-stone-700 -mx-2 px-2 py-1 rounded transition-colors"
                   >
-                    <span className="flex-1 font-medium line-clamp-1">
+                    <span className="flex-1 font-medium line-clamp-1 text-text-primary dark:text-stone-100">
                       {game.name}
                     </span>
                     <Badge variant={game.status}>{game.status}</Badge>
@@ -300,7 +302,7 @@ export default function StatsPage() {
                 ))}
               </div>
             ) : (
-              <p className="text-center text-text-secondary py-4">
+              <p className="text-center text-text-secondary dark:text-stone-400 py-4">
                 No recent activity
               </p>
             )}

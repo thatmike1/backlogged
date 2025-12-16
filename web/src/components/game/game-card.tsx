@@ -37,7 +37,7 @@ export function GameCard({
       to={`/game/${igdbId}`}
       className={cn(
         "group block bg-white dark:bg-stone-800",
-        "border-3 border-black dark:border-stone-200",
+        "border-3 border-black dark:border-stone-600",
         "rounded-lg overflow-hidden",
         "shadow-brutal-md",
         "hover:translate-x-[-2px] hover:translate-y-[-2px]",

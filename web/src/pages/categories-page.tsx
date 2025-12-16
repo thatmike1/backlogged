@@ -113,11 +113,11 @@ export default function CategoriesPage() {
         </div>
       ) : (
         <Card className="p-8 text-center">
-          <Folder className="w-16 h-16 mx-auto text-stone-300 mb-4" />
-          <p className="font-display text-xl text-text-secondary mb-2">
+          <Folder className="w-16 h-16 mx-auto text-stone-300 dark:text-stone-600 mb-4" />
+          <p className="font-display text-xl text-text-secondary dark:text-stone-400 mb-2">
             No categories yet
           </p>
-          <p className="text-text-muted mb-4">
+          <p className="text-text-muted dark:text-stone-500 mb-4">
             Create categories to organize your games
           </p>
           <Button variant="primary" onClick={() => setShowCreateModal(true)}>
@@ -135,7 +135,7 @@ export default function CategoriesPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-text-secondary mb-2">
+            <label className="block text-sm font-semibold text-text-secondary dark:text-stone-400 mb-2">
               Name
             </label>
             <Input
@@ -147,7 +147,7 @@ export default function CategoriesPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-text-secondary mb-2">
+            <label className="block text-sm font-semibold text-text-secondary dark:text-stone-400 mb-2">
               Color
             </label>
             <div className="flex flex-wrap gap-2">
@@ -171,7 +171,7 @@ export default function CategoriesPage() {
 
           {/* preview */}
           <div>
-            <label className="block text-sm font-semibold text-text-secondary mb-2">
+            <label className="block text-sm font-semibold text-text-secondary dark:text-stone-400 mb-2">
               Preview
             </label>
             <Badge

@@ -19,17 +19,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const baseStyles = [
       "inline-flex items-center justify-center",
       "font-semibold font-display",
-      "border-3 border-black",
+      "border-3 border-black dark:border-stone-600",
       "rounded-md",
-      "shadow-[3px_3px_0_#000]",
+      "shadow-[3px_3px_0_#000] dark:shadow-[3px_3px_0_#44403c]",
       "transition-all duration-150",
       "hover:translate-x-[-2px] hover:translate-y-[-2px]",
-      "hover:shadow-[5px_5px_0_#000]",
+      "hover:shadow-[5px_5px_0_#000] dark:hover:shadow-[5px_5px_0_#44403c]",
       "active:translate-x-[1px] active:translate-y-[1px]",
-      "active:shadow-[1px_1px_0_#000]",
+      "active:shadow-[1px_1px_0_#000] dark:active:shadow-[1px_1px_0_#44403c]",
       "disabled:opacity-50 disabled:cursor-not-allowed",
       "disabled:hover:translate-x-0 disabled:hover:translate-y-0",
-      "disabled:hover:shadow-[3px_3px_0_#000]",
+      "disabled:hover:shadow-[3px_3px_0_#000] dark:disabled:hover:shadow-[3px_3px_0_#44403c]",
       "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
     ];
 
@@ -40,7 +40,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       success: "bg-accent-mint text-black hover:bg-accent-mint/90",
       danger: "bg-accent-coral text-black hover:bg-accent-coral/90",
       ghost:
-        "bg-transparent text-black border-black hover:bg-black/5 dark:text-white dark:border-stone-200 dark:hover:bg-white/5",
+        "bg-transparent text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/5",
     };
 
     const sizeStyles = {

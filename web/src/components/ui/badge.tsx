@@ -26,9 +26,9 @@ export function Badge({
     "inline-flex items-center",
     "px-2.5 py-0.5",
     "text-xs font-semibold font-body",
-    "border-2 border-black",
+    "border-2 border-black dark:border-stone-600",
     "rounded-sm",
-    "shadow-[2px_2px_0_#000]",
+    "shadow-[2px_2px_0_#000] dark:shadow-[2px_2px_0_#44403c]",
   ];
 
   const variantStyles = {

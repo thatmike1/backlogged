@@ -18,17 +18,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       "bg-white",
       "border-3",
       "rounded-md",
-      "shadow-[3px_3px_0_#000]",
+      "shadow-[3px_3px_0_#000] dark:shadow-[3px_3px_0_#44403c]",
       "transition-all duration-150",
       "placeholder:text-muted",
       "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
       "focus:translate-x-[-1px] focus:translate-y-[-1px]",
-      "focus:shadow-[4px_4px_0_#000]",
+      "focus:shadow-[4px_4px_0_#000] dark:focus:shadow-[4px_4px_0_#44403c]",
       "disabled:opacity-50 disabled:cursor-not-allowed",
-      "dark:bg-bg-dark-elevated dark:text-white dark:border-stone-200",
+      "dark:bg-bg-dark-elevated dark:text-white",
     ];
 
-    const borderStyles = error ? "border-accent-coral" : "border-black";
+    const borderStyles = error
+      ? "border-accent-coral"
+      : "border-black dark:border-stone-600";
 
     return (
       <div className="w-full">
@@ -73,19 +75,21 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       "bg-white",
       "border-3",
       "rounded-md",
-      "shadow-[3px_3px_0_#000]",
+      "shadow-[3px_3px_0_#000] dark:shadow-[3px_3px_0_#44403c]",
       "transition-all duration-150",
       "placeholder:text-muted",
       "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
       "focus:translate-x-[-1px] focus:translate-y-[-1px]",
-      "focus:shadow-[4px_4px_0_#000]",
+      "focus:shadow-[4px_4px_0_#000] dark:focus:shadow-[4px_4px_0_#44403c]",
       "disabled:opacity-50 disabled:cursor-not-allowed",
       "resize-none",
       "min-h-[100px]",
-      "dark:bg-bg-dark-elevated dark:text-white dark:border-stone-200",
+      "dark:bg-bg-dark-elevated dark:text-white",
     ];
 
-    const borderStyles = error ? "border-accent-coral" : "border-black";
+    const borderStyles = error
+      ? "border-accent-coral"
+      : "border-black dark:border-stone-600";
 
     return (
       <div className="w-full">

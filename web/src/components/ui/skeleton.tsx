@@ -28,7 +28,7 @@ export function Skeleton({ className }: SkeletonProps) {
  */
 export function GameCardSkeleton() {
   return (
-    <div className="border-3 border-black rounded-lg shadow-[5px_5px_0_#000] bg-white dark:bg-bg-dark-elevated overflow-hidden">
+    <div className="border-3 border-black dark:border-stone-600 rounded-lg shadow-[5px_5px_0_#000] dark:shadow-[5px_5px_0_#44403c] bg-white dark:bg-bg-dark-elevated overflow-hidden">
       {/* cover image placeholder */}
       <Skeleton className="w-full aspect-[3/4] rounded-none" />
 
@@ -68,7 +68,7 @@ export function TextSkeleton({ lines = 3 }: { lines?: number }) {
  */
 export function ListItemSkeleton() {
   return (
-    <div className="flex items-center gap-4 p-4 border-3 border-black rounded-lg shadow-[3px_3px_0_#000] bg-white dark:bg-bg-dark-elevated">
+    <div className="flex items-center gap-4 p-4 border-3 border-black dark:border-stone-600 rounded-lg shadow-[3px_3px_0_#000] dark:shadow-[3px_3px_0_#44403c] bg-white dark:bg-bg-dark-elevated">
       {/* thumbnail */}
       <Skeleton className="w-16 h-16 rounded-md flex-shrink-0" />
 

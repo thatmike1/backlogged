@@ -90,7 +90,7 @@ export function GameGrid({
  */
 function GameCardSkeleton() {
   return (
-    <div className="bg-white dark:bg-stone-800 border-3 border-black dark:border-stone-200 rounded-lg overflow-hidden shadow-brutal-md">
+    <div className="bg-white dark:bg-stone-800 border-3 border-black dark:border-stone-600 rounded-lg overflow-hidden shadow-brutal-md">
       <Skeleton className="aspect-[3/4]" />
       <div className="p-4 space-y-2">
         <Skeleton className="h-5 w-3/4" />
