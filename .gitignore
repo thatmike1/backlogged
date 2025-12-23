@@ -8,7 +8,7 @@ dist/
 .env
 
 # database
-data/*.db
+# data/backlogged.db is now tracked in git
 data/token.json
 
 # IDE
